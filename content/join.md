@@ -12,7 +12,7 @@ AIDA is primarily for Ajman University students, but we're open to collaboration
 
 Follow these steps to register and become an official AIDA club member:
 
-1) Log into https://ors.ajman.ac.ae/Login.aspx using your AU student ID number and password.
+1) Log into https://ors.ajman.ac.ae/Login.aspx using your AU student ID and password.
 
 2) Go to **eRequests** >> **All Requests** >> **New Requests**.
 
