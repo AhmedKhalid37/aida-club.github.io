@@ -1,0 +1,74 @@
+baseURL = 'https://aida-club.github.io/'
+languageCode = 'en-us'
+title = 'AIDA — Ajman University AI & Data Science Club'
+theme = 'PaperMod'
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+pagination.pagerSize = 10
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[params]
+  env = 'production'
+  title = 'AIDA'
+  description = "AI & Data Science Club at Ajman University — daily AI/ML digests, weekly deep-dives, and resources for students."
+  keywords = ['AI', 'Machine Learning', 'Data Science', 'Ajman University', 'UAE', 'Student Club']
+  author = 'AIDA'
+  defaultTheme = 'auto'
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowToc = true
+  TocOpen = false
+
+  [params.homeInfoParams]
+    Title = 'AIDA 🇦🇪'
+    Content = '''
+The AI & Data Science Club at Ajman University. We publish daily digests on the most important AI/ML developments — written for students, by students. Sharp, authentic, and free of corporate fluff.
+
+Check the latest digests below, or learn more about us on the About page.
+    '''
+
+  [[params.socialIcons]]
+    name = 'github'
+    url = 'https://github.com/aida-club'
+
+[[menu.main]]
+  identifier = 'posts'
+  name = 'Daily Digests'
+  url = '/posts/'
+  weight = 10
+
+[[menu.main]]
+  identifier = 'weekly'
+  name = 'Weekly Recaps'
+  url = '/tags/weekly-digest/'
+  weight = 20
+
+[[menu.main]]
+  identifier = 'about'
+  name = 'About'
+  url = '/about/'
+  weight = 30
+
+[[menu.main]]
+  identifier = 'join'
+  name = 'Join'
+  url = '/join/'
+  weight = 40
+
+[[menu.main]]
+  identifier = 'archive'
+  name = 'Archive'
+  url = '/archives/'
+  weight = 50
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
