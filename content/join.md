@@ -6,7 +6,7 @@ ShowToc: false
 
 ## Who Can Join
 
-AIDA is primarily for Ajman University students, but we're open to collaborations with students from other universities who are serious about AI/ML. We have but one requirement for both our board members and club members: show up and contribute.
+AIDA is primarily for Ajman University students, but we're open to collaborations with students from other universities who are serious about AI/DS. We have but one requirement for both our board members and club members: show up and contribute.
 
 ## How to Join
 
