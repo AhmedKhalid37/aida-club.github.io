@@ -1,0 +1,33 @@
+{{ define "main" }}
+
+<section class="aida-list-header">
+  <div class="aida-post-breadcrumb mono">
+    {{ with .Parent }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> / {{ end }}{{ .Title }}
+  </div>
+  <h1 class="aida-list-title">{{ .Title }}</h1>
+  {{ with .Description }}<p class="aida-list-dek">{{ . }}</p>{{ end }}
+</section>
+
+<section class="aida-section">
+  <div class="aida-list-items">
+    {{ range .Paginator.Pages }}
+    <article class="aida-list-item">
+      <div class="aida-list-item-date mono">{{ .Date.Format "Jan 2 · 2006" | upper }}</div>
+      <div class="aida-list-item-body">
+        <h2 class="aida-list-item-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{ with .Description }}<p class="aida-list-item-excerpt">{{ . }}</p>{{ end }}
+        <div class="aida-list-item-meta mono">
+          {{ range first 2 .Params.tags }}
+          <span class="aida-post-tag">#{{ . | urlize }}</span>
+          {{ end }}
+          <span>{{ .ReadingTime }} min</span>
+        </div>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+
+  {{ template "_internal/pagination.html" . }}
+</section>
+
+{{ end }}

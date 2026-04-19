@@ -1,0 +1,8 @@
+<footer class="aida-footer mono">
+  <span>&copy; {{ now.Year }} AIDA · Ajman University</span>
+  <div class="aida-footer-links">
+    <a href="{{ "index.xml" | relURL }}">RSS</a>
+    {{ with .Site.Params.github }}<a href="{{ . }}">GitHub</a>{{ end }}
+    <a href="{{ "about" | relURL }}">About</a>
+  </div>
+</footer>

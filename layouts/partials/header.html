@@ -1,0 +1,20 @@
+<nav class="aida-nav">
+  <a href="{{ .Site.BaseURL }}" class="aida-nav-logo" aria-label="{{ .Site.Title }} home">
+    <span class="aida-nav-dot" aria-hidden="true"></span>
+    <span class="aida-nav-wordmark mono">AI &amp; Data<br class="mobile-only">Analytics Club</span>
+  </a>
+
+  <button class="aida-nav-burger" aria-label="Open menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'); document.getElementById('aida-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul id="aida-menu" class="aida-nav-links mono">
+    {{ range .Site.Menus.main }}
+    <li>
+      <a href="{{ .URL | absURL }}"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>
+        {{ .Name }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</nav>

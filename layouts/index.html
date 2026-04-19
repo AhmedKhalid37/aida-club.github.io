@@ -1,0 +1,66 @@
+{{ define "main" }}
+
+<section class="aida-hero">
+  <div class="aida-hero-copy">
+    <div class="aida-hero-eyebrow mono">Ajman University · Est. 2025</div>
+    <h1 class="aida-hero-title">AI &amp; Data Science,<br>Read By Students<br>Who <span class="aida-hero-title-accent">Actually Build.</span></h1>
+    <p class="aida-hero-sub">{{ with .Site.Params.homeInfoParams.Content }}{{ . | markdownify }}{{ else }}Daily digests on the AI/ML papers, tools, and debates that matter. Written for CS students. No hype, no LinkedIn takes, no filler.{{ end }}</p>
+    <div class="aida-hero-cta">
+      {{ with (where .Site.RegularPages "Section" "posts" | first 1) }}
+      <a href="{{ (index . 0).RelPermalink }}" class="aida-btn aida-btn-primary">Today's Digest →</a>
+      {{ end }}
+      <a href="{{ "join" | relURL }}" class="aida-btn">Join AIDA</a>
+    </div>
+  </div>
+  <div class="aida-hero-logo">
+    <img src="{{ "logo.svg" | relURL }}" alt="AIDA Logo" loading="eager" width="280" height="280">
+  </div>
+</section>
+
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $featured := $posts | first 3 }}
+
+{{ with $featured }}
+<section class="aida-section">
+  <div class="aida-section-head">
+    <h2 class="aida-section-title mono">▸ Latest Digests</h2>
+    <a href="{{ "posts" | relURL }}" class="aida-section-link mono">All Posts →</a>
+  </div>
+  <div class="aida-post-grid">
+    {{ range $i, $post := . }}
+    <article class="aida-post-card {{ if eq $i 0 }}featured{{ end }}">
+      <div class="aida-post-date mono">{{ .Date.Format "Jan 2 · 2006" | upper }}</div>
+      <h3 class="aida-post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p class="aida-post-excerpt">{{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
+      <div class="aida-post-meta mono">
+        {{ range first 1 .Params.tags }}
+        <span class="aida-post-tag">#{{ . | urlize }}</span>
+        {{ end }}
+        <span>· {{ .ReadingTime }} min</span>
+        {{ if eq $i 0 }}<span>· {{ .WordCount }} words</span>{{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ $quickhits := $posts | after 3 | first 5 }}
+{{ with $quickhits }}
+<section class="aida-section">
+  <div class="aida-section-head">
+    <h2 class="aida-section-title mono">▸ Quick Hits This Week</h2>
+    <a href="/tags/weekly-digest/" class="aida-section-link mono">Weekly Recap →</a>
+  </div>
+  <div class="aida-quickhits">
+    {{ range $i, $post := . }}
+    <div class="aida-quickhit">
+      <span class="aida-quickhit-num mono">{{ printf "%02d" (add $i 1) }}</span>
+      <a href="{{ .RelPermalink }}" class="aida-quickhit-text">{{ .Title }}</a>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

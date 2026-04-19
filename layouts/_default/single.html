@@ -1,0 +1,64 @@
+{{ define "main" }}
+
+<article class="aida-post-page">
+  <header class="aida-post-header">
+    <div class="aida-post-breadcrumb mono">
+      <a href="{{ "posts" | relURL }}">Digests</a> / {{ .Date.Format "January 2006" }}
+    </div>
+    <div class="aida-post-eyebrow mono">
+      <span>{{ .Date.Format "Jan 2 · 2006" | upper }}</span>
+      {{ with .Params.tags }}
+      <span>·</span>
+      {{ range first 1 . }}<span class="aida-post-tag">#{{ . | urlize }}</span>{{ end }}
+      {{ end }}
+      <span>·</span>
+      <span>{{ .ReadingTime }} MIN READ</span>
+    </div>
+    <h1 class="aida-post-h1">{{ .Title }}</h1>
+    {{ with .Description }}<p class="aida-post-dek">{{ . }}</p>{{ end }}
+  </header>
+
+  <div class="aida-post-body">
+    <div class="aida-post-article">
+      {{ .Content }}
+    </div>
+
+    <aside class="aida-post-sidebar">
+      {{ if .TableOfContents }}
+      <div class="aida-sidebar-block aida-sidebar-toc">
+        <div class="aida-sidebar-label mono">On This Page</div>
+        {{ .TableOfContents }}
+      </div>
+      {{ end }}
+
+      {{ with .Params.sources }}
+      <div class="aida-sidebar-block">
+        <div class="aida-sidebar-label mono">Sources</div>
+        {{ range . }}
+        <div class="aida-sidebar-item"><a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }} →</a></div>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <div class="aida-sidebar-block">
+        <div class="aida-sidebar-label mono">Share</div>
+        <div class="aida-sidebar-item"><a href="https://x.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}" target="_blank" rel="noopener">X / Twitter</a></div>
+        <div class="aida-sidebar-item"><a href="#" onclick="navigator.clipboard.writeText('{{ .Permalink }}'); this.textContent='Copied!'; return false;">Copy Link</a></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="aida-post-footer mono">
+    {{ with .PrevInSection }}
+    <a href="{{ .RelPermalink }}" class="aida-post-footer-prev">← {{ .Title | truncate 50 }}</a>
+    {{ else }}
+    <span></span>
+    {{ end }}
+    <div class="aida-post-footer-links">
+      <a href="{{ "index.xml" | relURL }}">RSS</a>
+      <a href="{{ "posts" | relURL }}">Archive</a>
+    </div>
+  </footer>
+</article>
+
+{{ end }}
