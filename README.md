@@ -60,4 +60,4 @@ Then open http://localhost:1313. The `-D` flag includes draft posts.
 
 ## Contributing
 
-AIDA members — contribution guidelines will be added here. For now, coordinate via the weekly meeting or the club email.
+AIDA members — contribution guidelines will be added here. For now, coordinate via the club email --> aiclubajman@gmail.com.
